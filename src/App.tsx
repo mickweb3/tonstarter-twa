@@ -14,6 +14,8 @@ function App() {
 
     const initData = window.Telegram.WebApp.initData || "";
     const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe || {};
+    setInitData(initData);
+    setDataUnsafe(initDataUnsafe);
   }, []);
   return (
     <QueryClientProvider client={queryClient}>
