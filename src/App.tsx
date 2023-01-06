@@ -21,8 +21,8 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="App">
         <h1>Ton Sample TWA xxxxxx</h1>
-        <p>InitData: {initData}</p>
-        <p>DataUnsafe: {dataUnsafe}</p>
+        <p>InitData: {JSON.stringify(initData, null, 2)}</p>
+        <p>DataUnsafe: {JSON.stringify(dataUnsafe, null, 2)}</p>
 
         <TonConnector />
       </div>
