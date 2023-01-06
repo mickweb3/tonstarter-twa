@@ -3,7 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Address, fromNano } from "ton";
 import { Card } from "./Card";
 import { tc } from "./Ton-Connector";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 export function TonWalletDetails() {
   const connect = useTonhubConnect();
 
@@ -34,7 +35,7 @@ export function TonWalletDetails() {
             }}
           >
             {/* @ts-ignore */}
-            Address: {connect.state.walletConfig.address}
+            TON Address: {connect.state.walletConfig.address}
           </div>
           <div>Balance: {isLoading ? "Loading..." : data}</div>
         </div>
