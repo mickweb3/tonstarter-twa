@@ -23,6 +23,11 @@ export function TonWalletDetails() {
     { enabled: !!connect.state?.walletConfig?.address }
   );
 
+  const handleSendAddress = () => {
+    //@ts-ignore
+    window.Telegram.WebApp.sendData(connect.state?.walletConfig?.address);
+  };
+
   return (
     <>
       <Card title="Wallet">
@@ -41,14 +46,17 @@ export function TonWalletDetails() {
         </div>
         {/* @ts-ignore */}
         {connect.state.walletConfig.address && (
-          <button
-            onClick={() => {
-              localStorage.removeItem("connection");
-              window.location.reload();
-            }}
-          >
-            Disconnect
-          </button>
+          <div>
+            <button
+              onClick={() => {
+                localStorage.removeItem("connection");
+                window.location.reload();
+              }}
+            >
+              Disconnect
+            </button>
+            <button onClick={handleSendAddress}>Send Address to Bot</button>
+          </div>
         )}
       </Card>
     </>
