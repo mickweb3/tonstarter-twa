@@ -53,18 +53,17 @@ let githubUsername, githubRepo, botUsername;
   githubRepo = githubRepoQ || githubRepo;
   if (!githubRepo?.length > 0) exitError("Repo name is required");
 
-  const getBot = await axios.get(
-    `https://api.telegram.org/bot${accessToken}/getMe`
-  ).catch(exitError);
+  const getBot = await axios
+    .get(`https://api.telegram.org/bot${accessToken}/getMe`)
+    .catch(exitError);
 
   botUsername = getBot.data.result.username;
   const url = `https://${githubUsername}.github.io/${githubRepo}`;
 
   console.log(`\n\nSetting bot ${botUsername} webapp url to ${url}`);
 
-  const resp = await axios.post(
-    `https://api.telegram.org/bot${accessToken}/setChatMenuButton`,
-    {
+  const resp = await axios
+    .post(`https://api.telegram.org/bot${accessToken}/setChatMenuButton`, {
       menu_button: {
         type: "web_app",
         text: "Launch Webapp",
@@ -72,8 +71,8 @@ let githubUsername, githubRepo, botUsername;
           url: url,
         },
       },
-    }
-  ).catch(exitError);
+    })
+    .catch(exitError);
 
   if (resp.status === 200) {
     console.log(

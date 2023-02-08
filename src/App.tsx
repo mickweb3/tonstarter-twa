@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Bot, session } from "grammy";
 import { conversations, createConversation } from "@grammyjs/conversations";
 import { useEffect, useState } from "react";
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -20,9 +21,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        <h1>Ton Sample TWA xxxxxx</h1>
-        <p>InitData: {JSON.stringify(initData, null, 2)}</p>
-        <p>DataUnsafe: {JSON.stringify(dataUnsafe, null, 2)}</p>
+        <h1>Soda x TON</h1>
+        {/* <p>InitData: {JSON.stringify(initData, null, 2)}</p>
+        <p>DataUnsafe: {JSON.stringify(dataUnsafe, null, 2)}</p> */}
 
         <TonConnector />
       </div>

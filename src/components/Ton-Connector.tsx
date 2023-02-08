@@ -8,12 +8,12 @@ import isMobile from "is-mobile";
 import QRCode from "react-qr-code";
 
 import { TonClient } from "ton";
+import { useEffect } from "react";
 import { TransferTon } from "./TransferTon";
 import { Counter } from "./Counter";
-import { useEffect } from "react";
 import { Jetton } from "./Jettons";
 import { TonWalletDetails } from "./TonWalletDetails";
-
+import DaoList from "./Dao";
 // TODO change to L3 client
 export const tc = new TonClient({
   endpoint: "https://scalable-api.tonwhales.com/jsonRPC",
@@ -62,9 +62,7 @@ function _TonConnecterInternal() {
       {isConnected && (
         <div style={{ textAlign: "left", marginBottom: 20 }}>
           <TonWalletDetails />
-          <TransferTon />
-          <Counter />
-          <Jetton />
+          <DaoList />
         </div>
       )}
     </>

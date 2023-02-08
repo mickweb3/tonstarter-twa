@@ -25,7 +25,22 @@ export function TonWalletDetails() {
 
   const handleSendAddress = () => {
     //@ts-ignore
-    window.Telegram.WebApp.sendData(connect.state?.walletConfig?.address);
+    // window.Telegram.WebApp.sendData(connect.state?.walletConfig?.address);
+    const result = window.Telegram.WebApp.answerWebAppQuery(
+      "address",
+      connect.state?.walletConfig?.address
+    );
+    console.log(result);
+  };
+
+  const handleBind = () => {
+    const msg = {
+      type: "bind_addr",
+      data: {
+        address: connect.state?.walletConfig?.address,
+      },
+    };
+    window.Telegram.WebApp.sendData(JSON.stringify(msg));
   };
 
   return (
@@ -34,20 +49,19 @@ export function TonWalletDetails() {
         <div style={{ marginBottom: 20 }}>
           <div
             style={{
-              whiteSpace: "nowrap",
-              overflow: "hidden",
+              wordBreak: "break-all",
               textOverflow: "ellipsis",
             }}
           >
             {/* @ts-ignore */}
             TON Address: {connect.state.walletConfig.address}
           </div>
-          <div>Balance: {isLoading ? "Loading..." : data}</div>
         </div>
         {/* @ts-ignore */}
         {connect.state.walletConfig.address && (
           <div>
             <button
+              style={{ marginBottom: "10px" }}
               onClick={() => {
                 localStorage.removeItem("connection");
                 window.location.reload();
@@ -55,7 +69,13 @@ export function TonWalletDetails() {
             >
               Disconnect
             </button>
-            <button onClick={handleSendAddress}>Send Address to Bot</button>
+            <button
+              style={{ marginBottom: "10px" }}
+              onClick={handleSendAddress}
+            >
+              Send Address to Bot
+            </button>
+            <button onClick={handleBind}>Bind address with Telegram</button>
           </div>
         )}
       </Card>

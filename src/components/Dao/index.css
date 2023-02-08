@@ -1,0 +1,12 @@
+.dao-list {
+  width: 300px;
+}
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.dao-item {
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
