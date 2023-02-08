@@ -6,7 +6,7 @@ import { tc } from "./Ton-Connector";
 import { useEffect, useState } from "react";
 import axios from "axios";
 export function TonWalletDetails() {
-  const connect = useTonhubConnect();
+  const connect: any = useTonhubConnect();
 
   // @ts-ignore
   const { isLoading, data } = useQuery(
